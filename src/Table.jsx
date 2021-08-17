@@ -1,62 +1,93 @@
 import Pagination from "./Pagination";
 import './Table.css'
+import React from "react";
 
-let Table = (props) => {
-    let filteredMovies = props.moviesData.filter((el)=>{
-        if(props.selectedFilter === "AllGenres")
+
+class Table extends React.Component{
+    
+    state={
+        currPage: 1
+    }
+
+    selectPage =(pageNum)=>{
+        this.setState({currPage: pageNum});
+    }
+
+    
+    render = ()=>{
+
+        let allMovies = this.props.moviesData;
+        let currFilter = this.props.selectedFilter;
+        
+        
+        let filteredMovies = allMovies.filter((el)=>{
+            if(currFilter === "AllGenres")
             return true;
+            return el.genre.name === currFilter;
+        })
+        
+        let startIdx = (this.state.currPage - 1) * 4;
+        let endIdx = Math.min(filteredMovies.length, this.state.currPage * 4);
 
-        return el.genre.name === props.selectedFilter;
-    })
+        // let limMovieData = [];
+        // for(let i = StartIdx; i <= EndIdx; i++){
+        //     limMovieData.push(filteredMovies[i]);
+        // }
 
-    return (
+        let arrToBeUsedInTable = filteredMovies.slice(startIdx, endIdx);
 
-        <>
-            <table class="table m-4">
-                <thead>
-                    <tr>
-                        <th scope="col">S.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Genre</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Rate</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        filteredMovies.map((el, idx) => {
-                            return (
-                                <tr key={el._id}>
-                                    <th scope="row">{idx + 1}</th>
-                                    <td>{el.title}</td>
-                                    <td>{el.genre.name}</td>
-                                    <td>{el.numberInStock}</td>
-                                    <td>{el.dailyRentalRate}</td>
-                                    <td onClick={()=>{
-                                        props.handleLiked(el._id);
-                                    }
-                                    }>
-                                        {el.liked?<span class="material-icons">
-                                        favorite
-                                        </span>: <span class="material-icons">
-                                        favorite_border
-                                        </span>}
-                                    </td>
-                                    <td><button>Delete</button></td>
-                                </tr>
-                            )
-                        })
-                    }
+        let numberOfPages = Math.ceil(filteredMovies.length / 4);
+        
+        return (
 
-                </tbody>
-            </table>
+            <>
+                <table class="table m-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No.</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            arrToBeUsedInTable.map((el, idx) => {
+                                return (
+                                    <tr key={el._id}>
+                                        <th scope="row">{idx + 1}</th>
+                                        <td>{el.title}</td>
+                                        <td>{el.genre.name}</td>
+                                        <td>{el.numberInStock}</td>
+                                        <td>{el.dailyRentalRate}</td>
+                                        <td onClick={()=>{
+                                            this.props.handleLiked(el._id);
+                                        }
+                                        }>
+                                            {el.liked?<span class="material-icons">
+                                            favorite
+                                            </span>: <span class="material-icons">
+                                            favorite_border
+                                            </span>}
+                                        </td>
+                                        <td><button onClick={()=>{
+                                            this.props.handleDelete(el._id)
+                                        }}>Delete</button></td>
+                                    </tr>
+                                )
+                            })
+                        }
 
-            <Pagination />
-        </>
-    )
+                    </tbody>
+                </table>
 
+                <Pagination selectPage={this.selectPage} currPage={this.state.currPage} numberOfPages={numberOfPages}/>
+            </>
+        )
+    }
 }
 
 export default Table;

@@ -16,22 +16,34 @@ class App extends React.Component{
   }
 
   handleLiked=(sel_id)=>{
-    console.log(sel_id);
+  
     let idx = this.state.movies.findIndex((el)=>{
       return el._id == sel_id;
     });
-  
-    let currState = this.state.movies.map((el) =>{
-      return el;
-    });
 
-    if(!currState[idx].liked){
-      currState[idx].liked = true;
-    }
-    else{
+    let currState = this.state.movies;
+
+    if(currState[idx].liked){
       currState[idx].liked = false;
     }
+    else{
+      currState[idx].liked = true;
+    }
+
     this.setState({movies: currState});
+  }
+
+  handleDelete=(sel_id)=>{
+
+    let currState = this.state.movies;
+  
+    let filteredMovies = currState.filter((el)=>{
+      if(sel_id !== el._id){
+        return true;
+      }
+    })
+    
+    this.setState({movies: filteredMovies});
   }
 
   componentDidMount = ()=>{
@@ -61,10 +73,10 @@ class App extends React.Component{
               <Filter handleFilters={this.handleFilters} selectedFilter={this.state.selectedFilter} genresData={this.state.genres} />
             </div>
             <div className="col-9">
-            <Search selectedFilter={this.state.selectedFilter} moviesData={this.state.movies}/>
+            <Search totalMovies={this.state.movies.length}/>
             <div className="row">
               <div className="col-10">
-                <Table selectedFilter={this.state.selectedFilter} handleLiked={this.handleLiked} moviesData={this.state.movies} />
+                <Table selectedFilter={this.state.selectedFilter} handleDelete={this.handleDelete} handleLiked={this.handleLiked} moviesData={this.state.movies} />
               </div>
             </div>
           </div>

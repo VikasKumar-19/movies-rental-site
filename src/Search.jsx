@@ -1,16 +1,9 @@
 let Search = (props)=>{
 
-    let filteredMovies = props.moviesData.filter((el)=>{
-        if(props.selectedFilter === "AllGenres")
-            return true;
-
-        return el.genre.name === props.selectedFilter;
-    })
-
     return(
         <>
             <div className="m-4">
-                <p>showing {filteredMovies.length} movies from the database</p>
+                <p>showing {props.totalMovies} movies from the database</p>
                 <button type="button" class="btn btn-secondary">Add</button>
             </div>
             <div className="row">
