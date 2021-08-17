@@ -8,7 +8,7 @@ class App extends React.Component{
   state = {
     movies:[],
     genres:[],
-    selectedFilter:""
+    selectedFilter:"",
   }
 
   handleFilters=(filterName)=>{
@@ -61,7 +61,7 @@ class App extends React.Component{
               <Filter handleFilters={this.handleFilters} selectedFilter={this.state.selectedFilter} genresData={this.state.genres} />
             </div>
             <div className="col-9">
-            <Search />
+            <Search selectedFilter={this.state.selectedFilter} moviesData={this.state.movies}/>
             <div className="row">
               <div className="col-10">
                 <Table selectedFilter={this.state.selectedFilter} handleLiked={this.handleLiked} moviesData={this.state.movies} />

@@ -1,0 +1,17 @@
+button{
+    border: none;
+    outline: none;
+    background-color: red;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: rgb(173, 13, 13);
+}
+
+.material-icons{
+    cursor: default!important;
+    user-select: none;
+}

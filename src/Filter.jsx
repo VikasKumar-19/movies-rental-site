@@ -1,3 +1,5 @@
+import './Filter.css'
+
 let Filter = (props)=>{
     return(
         <>

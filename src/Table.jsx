@@ -1,4 +1,5 @@
 import Pagination from "./Pagination";
+import './Table.css'
 
 let Table = (props) => {
     let filteredMovies = props.moviesData.filter((el)=>{
