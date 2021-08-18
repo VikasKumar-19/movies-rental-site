@@ -10,9 +10,9 @@ let Search = (props)=>{
                 <div className="col-6 mx-4">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" onChange={(e)=>{
-                            
+                            props.updateSearch(e.currentTarget.value);
                         }}
-                        placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        placeholder="Search..." value={props.searchString} aria-describedby="basic-addon2" />
                     </div>
                 </div>
             </div>

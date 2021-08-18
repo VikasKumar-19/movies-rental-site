@@ -26,6 +26,12 @@ class Table extends React.Component{
             return el.genre.name === currFilter;
         })
         
+        filteredMovies = filteredMovies.filter((el)=>{
+            let movieTitle = el.title.toLowerCase();
+            let searchString = this.props.search.toLowerCase();
+            return movieTitle.includes(searchString);
+        })
+
         let startIdx = (this.state.currPage - 1) * 4;
         let endIdx = Math.min(filteredMovies.length, this.state.currPage * 4);
 
