@@ -77,7 +77,7 @@ class App extends React.Component {
 
   render = () => {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Navbar />
 
@@ -91,7 +91,7 @@ class App extends React.Component {
             <Route exact path='/login'>
               <Login />
             </Route>
-            <Route exact path='/movies-rental-site'>
+            <Route exact path='/'>
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-3">
