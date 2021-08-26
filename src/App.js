@@ -91,7 +91,7 @@ class App extends React.Component {
             <Route exact path='/login'>
               <Login />
             </Route>
-            <Route exact path='/'>
+            <Route exact path='/movies-rental-site'>
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-3">
