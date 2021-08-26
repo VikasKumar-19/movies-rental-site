@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/movies-rental-site/static/css/main.51ddc029.chunk.css",
+    "main.js": "/movies-rental-site/static/js/main.70bdb49f.chunk.js",
+    "main.js.map": "/movies-rental-site/static/js/main.70bdb49f.chunk.js.map",
+    "runtime-main.js": "/movies-rental-site/static/js/runtime-main.8148301a.js",
+    "runtime-main.js.map": "/movies-rental-site/static/js/runtime-main.8148301a.js.map",
+    "static/js/2.6d1e2bdc.chunk.js": "/movies-rental-site/static/js/2.6d1e2bdc.chunk.js",
+    "static/js/2.6d1e2bdc.chunk.js.map": "/movies-rental-site/static/js/2.6d1e2bdc.chunk.js.map",
+    "index.html": "/movies-rental-site/index.html",
+    "static/css/main.51ddc029.chunk.css.map": "/movies-rental-site/static/css/main.51ddc029.chunk.css.map",
+    "static/js/2.6d1e2bdc.chunk.js.LICENSE.txt": "/movies-rental-site/static/js/2.6d1e2bdc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8148301a.js",
+    "static/js/2.6d1e2bdc.chunk.js",
+    "static/css/main.51ddc029.chunk.css",
+    "static/js/main.70bdb49f.chunk.js"
+  ]
+}
